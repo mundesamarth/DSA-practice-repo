@@ -1,0 +1,40 @@
+Instead of checking every possible subarray/substring (which is often O(n^2)), we maintain a window and slide it across the array/string in O(n).
+EG: array = [1,2,3,4,5,6] the windows: [2,3,4]
+
+Instead of rebuilding that window every time, we just:
+    - Move the left edge
+    - Move the right edge
+
+
+There are TWO types:
+1. Fixed-Size window
+
+    Eg: Maximum sum of any 3 consective number
+    Array = [1,2,3,4,5], window = 3, we start with [1,2,3],[2,3,4],[3,4,5]
+
+
+2. Variable size window
+
+    Eg: substring without repeating character
+    window grows
+    abcabcbb duplicate -> bc -> bca -> bcab -> d cab -> cabc -> d abc -> abcb -> d bcb -> d cb -> cbb ->
+
+
+
+How to recognise sliding window
+
+    - Longest substring
+    - Shortest subarray
+    - maximum sum of k element
+    - consective element
+    - contiguous subarray
+    - contiguous substring
+
+
+Two pointers:
+←         →
+
+Sliding Window:
+[==========]
+^          ^
+left     right

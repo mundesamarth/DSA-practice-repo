@@ -1,0 +1,19 @@
+Two pointers is a DSA technique where we use two variables [indexs] to traverse a DS (usually array or string) simultaneously
+typically:      
+    one starts at the beginning (left)
+    one starts at the end (right), or both start at the same time
+    - The pointer moves accourding to the problems rules until a condition is met
+
+Common Uses:
+    * Reversing arrays / strings
+    * Checking palindromes
+    * Finding Pairs
+    * Comparing elements from both ends
+
+
+read / write pointer pattern
+    * Move Zeros
+    * Remove Duplicates from sorted array
+    * Remove elements
+    * String Compression
+    * Merge Sorted Array

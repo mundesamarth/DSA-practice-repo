@@ -1,0 +1,17 @@
+Index:   0   1   2   3   4
+
+nums:    2   4   1   7   3
+
+prefix:  2   6   7   14  17
+
+
+
+A technique where we create a new array to store the cumulative totals of elements from the very beginning of an input array up to each given index.
+
+
+How to recoginse a prefix sum problem
+    - Sum between two indices
+    - range sum
+    - subarray sum
+    - running totals
+    - multiple sum queries

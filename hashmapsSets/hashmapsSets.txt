@@ -1,0 +1,26 @@
+HashMap ->. when i need to store extra information like a count, index , or associated value.
+HashSet -> To check  wheather something exists or has been seen before.
+
+
+Example:
+   HashMap-> Sam
+            John
+            Emma
+            Sam
+            John
+            Sam
+  {
+  Sam: 3,
+  John: 2,
+  Emma: 1
+}
+
+    HashSet -> Sam
+                John
+                Emma
+                Sam
+                Emma
+
+    const entered = new Set();  entered -> Sam
+                                            John
+                                            Emma

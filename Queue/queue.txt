@@ -1,0 +1,63 @@
+Queue follows ---> First In, First Out.
+
+FRONT                         BACK
+  ↓                             ↓
+[Sam] [John] [Alex] [Emma]
+  ↑
+leaves first
+
+const queue = [];
+
+| Operation    | Meaning            | JavaScript                |
+| ------------ | ------------------ | ------------------------- |
+| Enqueue      | Add to back        | `queue.push(x)`           |
+| Dequeue      | Remove from front  | `queue.shift()`           |
+| Front / Peek | Look at first item | `queue[0]`                |
+| Back         | Look at last item  | `queue[queue.length - 1]` |
+| Size         | Number of items    | `queue.length`            |
+| Is empty     | Check if empty     | `queue.length === 0`      |
+
+When a problem sounds like:
+"Process things in the same order they arrived."
+
+For Queue, the useful “pattern recognition” list is more like this:
+
+* **BFS / level-order traversal**
+
+  * Binary Tree Level Order Traversal
+  * Shortest path in an unweighted graph
+  * Rotten Oranges
+  * Number of steps / minimum moves style problems
+
+* **Process in arrival order**
+
+  * Recent requests / task scheduling
+  * Printer/process queues
+  * Simulating people/jobs/events in order
+
+* **Multi-source BFS**
+
+  * Start from many points at once and spread outward
+  * Infection/fire/rotting/spread problems
+  * Distance from nearest source
+
+* **Monotonic Queue**
+
+  * Sliding Window Maximum
+  * Problems where you need the best/min/max element in a moving window efficiently
+
+* **Queue simulation**
+
+  * Students unable to eat lunch
+  * Ticket/process/order simulation problems
+  * Circular queue style problems
+
+A good mental trigger is:
+
+> If the **oldest unprocessed thing should be handled next**, think Queue.
+
+And specifically:
+
+> If you see **minimum number of steps**, **level by level**, or **spread outward**, think **BFS + Queue**.
+
+That’s the queue equivalent of your read/write pointer pattern list.

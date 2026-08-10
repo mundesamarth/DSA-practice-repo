@@ -1,0 +1,28 @@
+Stack Data structure , is LIFO = Last In First Out
+
+        TOP
+         ↓
+       [ 🟢 ]   ← last plate added
+       [ 🔵 ]
+       [ 🔴 ]   ← first plate added
+
+In JS there is no separate built-in `stack` class, Normally Array is used.
+
+
+const stack = [];
+
+Important Operations are:
+| What you want   | JavaScript                | Example          |
+| --------------- | ------------------------- | ---------------- |
+| Add to top      | `.push()`                 | `stack.push(10)` |
+| Remove from top | `.pop()`                  | `stack.pop()`    |
+| Look at top     | `stack[stack.length - 1]` | returns top      |
+| Stack size      | `.length`                 | `stack.length`   |
+| Check empty     | `.length === 0`           | true/false       |
+
+pop  → look at top AND remove it
+peek → look at top WITHOUT removing it. ----> stack[stack.length - 1]
+
+- Stacks become useful when something happens and you need to remember it until something later resolves it.
+
+- I need to remember previous things, but the most recent thing matters first

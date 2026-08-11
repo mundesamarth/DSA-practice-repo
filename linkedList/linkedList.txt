@@ -1,0 +1,40 @@
+
+-> In Linked list every elemetn is a "NODE". A node contains two things:
+    1. Value:
+    2. next.
+
+value stores the data
+next stores a reference to the next node.
+
+HEAD
+ ↓
+
+┌──────┬──────┐     ┌──────┬──────┐     ┌──────┬──────┐
+│  10  │ next │ --> │  20  │ next │ --> │  30  │ null │
+└──────┴──────┘     └──────┴──────┘     └──────┴──────┘
+
+- There are no indexes in linked list, so get a value we have to start from head. And follow .next until we react the it.
+
+
+Head - simply means first node of the linked list.
+
+- To traverse a linked list, we use current which is head and traverse using a pointer.
+Then move current = current.next.
+
+while (current !== null) {
+    // do something
+
+    current = current.next;
+}
+
+
+| Operation                | What you're doing           |
+| ------------------------ | --------------------------- |
+| `.val`                   | Read node's value           |
+| `.next`                  | Access next node            |
+| `current = current.next` | Move forward                |
+| `node.next = something`  | Change connection           |
+| `head`                   | First node                  |
+| `head = head.next`       | Remove/move past first node |
+| `node.next = null`       | Disconnect what comes after |
+| `new ListNode(x)`        | Create node                 |

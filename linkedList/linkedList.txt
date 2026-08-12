@@ -6,6 +6,10 @@
 value stores the data
 next stores a reference to the next node.
 
+- Uni directional always have to go in one direction.
+- cant use two pointer. but can break the list in middle and then compare.
+- Also use fast & slow to break a linked list
+
 HEAD
  ↓
 

@@ -1,0 +1,54 @@
+Binary tree -Go as deep as possible down one path before coming back. has two connections Left & Right attached to a value.
+A DFS tree is recursive by nature.
+usually recursion or Stack
+
+            10
+           /  \
+          5    15
+         / \   / \
+        3   7 12  20
+10
+ ↓
+5
+ ↓
+3
+Go deep → hit the end → come back → try another path
+
+
+
+            10          ← root
+           /  \
+parent->   5    15
+         / \     \
+        3   7     20            <- Children
+
+val   = 10
+left  = node 5
+right = node 15
+
+10       depth 0
+5  15    depth 1
+3 7 20   depth 2
+
+OPERATIONS
+| What you want           | JavaScript               |
+| ----------------------- | ------------------------ |
+| Node's value            | `node.val`               |
+| Left child              | `node.left`              |
+| Right child             | `node.right`             |
+| Move left               | `node = node.left`       |
+| Move right              | `node = node.right`      |
+| Check if node exists    | `node !== null`          |
+| Check left exists       | `node.left !== null`     |
+| Check right exists      | `node.right !== null`    |
+| Create node             | `new TreeNode(value)`    |
+| Change left connection  | `node.left = something`  |
+| Change right connection | `node.right = something` |
+
+
+The Three DFS traversal patterns
+Preorder:   NODE → LEFT → RIGHT
+
+Inorder:    LEFT → NODE → RIGHT
+
+Postorder:  LEFT → RIGHT → NODE

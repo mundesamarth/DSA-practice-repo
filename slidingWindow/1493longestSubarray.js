@@ -23,7 +23,7 @@ var longestSubarray = function(nums) {
 
         max_value = Math.max(max_value, r-l)
     }
-    return max_value
+    return max_valuex
 };
 
 console.log(longestSubarray(nums))

@@ -1,0 +1,114 @@
+BFS- > Bredth First Search 
+Finish everything at the current level before going deeper.
+
+
+Example:
+             1
+           /   \
+          2     3
+         / \   / \
+        4   5 6   7
+
+BFS visits: 
+1
+
+2 3
+
+4 5 6 7
+
+Traversal Order: 1 → 2 → 3 → 4 → 5 → 6 → 7
+
+- BFS uses a Queue
+FIFO
+First In, First Out
+
+
+OPERATIONS
+queue.push(x);   // enqueue: add to back
+
+queue.shift();   // dequeue: remove + return front
+
+queue[0];        // peek at front
+
+queue.length;    // size
+
+queue.length > 0 // not empty
+
+
+- Sometimes we dont just want to visit every node, we need to know , which nodes belong to each level, thats when we use: queue.length
+
+while
+    ↓
+controls the entire BFS
+
+for
+    ↓
+controls ONE level
+
+WHILE → "Do I have more levels?"
+
+FOR → "Process every node in this level."
+
+
+`MAJOR BFS patterns`
+
+1. Simple traversal -> Visit every node level-by-level
+    Queue + while
+    
+Typical Problem wording:
+    traverse tree
+    visit every node
+    search tree level-by-level
+
+2. Level Processing -> I need information about each individual level
+    queue
+    +
+    levelSize = queue.length
+    +
+    for loop
+
+Typical Problems:
+    average of each level
+    largest value on each level
+    rightmost node of each level
+    level order traversal
+
+3. Minimum Depth / Shortest path -> 
+BFS search
+    distance 0
+        ↓
+    distance 1
+        ↓
+    distance 2
+        ↓
+    distance 3
+
+Typical problem:
+    minimum steps
+    shortest path
+    nearest
+    minimum moves
+    fewest transformations
+
+
+4. Multi-source BFS
+queue = [source1, source2, source3]
+
+Problem Statement: 
+    infection
+    fire spreading
+    rotting
+    distance from nearest X
+
+5. Graph BFS + Visited
+Trees naturally go downward: 
+    parent
+    ↓
+    children
+But graphs can also loop:
+    A → B
+    ↑   ↓
+    D ← C
+
+So BFS could accidentally go forever: A → B → C → D → A → B → ...
+Thats why graph bfs usually needs: const visited = new Set();

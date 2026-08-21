@@ -1,0 +1,898 @@
+Yes. This is worth keeping as a reference because a lot of your mistakes aren't algorithm mistakes—they're mixing up JS methods between `Array`, `Set`, `Map`, stack, and queue.
+
+The biggest thing first:
+
+> **JavaScript does NOT have built-in `Stack` and `Queue` classes for normal LeetCode usage. We usually use an `Array` as both.**
+
+## JavaScript DSA cheat sheet
+
+| Structure | Operation         | JavaScript                | Meaning               |
+| --------- | ----------------- | ------------------------- | --------------------- |
+| **Stack** | Add               | `stack.push(x)`           | Add to top            |
+|           | Remove            | `stack.pop()`             | Remove + return top   |
+|           | Peek              | `stack[stack.length - 1]` | Look at top           |
+|           | Empty?            | `stack.length === 0`      | Check empty           |
+|           | Size              | `stack.length`            | Number of elements    |
+| **Queue** | Add               | `queue.push(x)`           | Add to back           |
+|           | Remove            | `queue.shift()`           | Remove + return front |
+|           | Peek              | `queue[0]`                | Look at front         |
+|           | Empty?            | `queue.length === 0`      | Check empty           |
+|           | Size              | `queue.length`            | Number of elements    |
+| **Set**   | Add               | `set.add(x)`              | Add unique value      |
+|           | Contains?         | `set.has(x)`              | Check value           |
+|           | Doesn't contain?  | `!set.has(x)`             | Check absence         |
+|           | Remove            | `set.delete(x)`           | Remove value          |
+|           | Size              | `set.size`                | Number of values      |
+|           | Empty?            | `set.size === 0`          | Check empty           |
+|           | Remove everything | `set.clear()`             | Clear Set             |
+| **Array** | Add end           | `arr.push(x)`             | Append                |
+|           | Remove end        | `arr.pop()`               | Remove last           |
+|           | Add beginning     | `arr.unshift(x)`          | Prepend               |
+|           | Remove beginning  | `arr.shift()`             | Remove first          |
+|           | Size              | `arr.length`              | Number of elements    |
+|           | Contains?         | `arr.includes(x)`         | Check value           |
+|           | Find index        | `arr.indexOf(x)`          | Index or `-1`         |
+|           | Slice             | `arr.slice(a,b)`          | Copy portion          |
+|           | Convert to string | `arr.join(",")`           | Join elements         |
+|           | Sort              | `arr.sort((a,b) => a-b)`  | Numeric ascending     |
+|           | Reverse           | `arr.reverse()`           | Reverse               |
+| **Map**   | Add/update        | `map.set(key, value)`     | Store pair            |
+|           | Get               | `map.get(key)`            | Get value             |
+|           | Contains key?     | `map.has(key)`            | Check key             |
+|           | Remove            | `map.delete(key)`         | Remove pair           |
+|           | Size              | `map.size`                | Number of pairs       |
+|           | Keys              | `map.keys()`              | All keys              |
+|           | Values            | `map.values()`            | All values            |
+|           | Entries           | `map.entries()`           | `[key,value]` pairs   |
+
+The pattern you should burn into your brain is:
+
+```text
+Array → .push()
+Stack → .push()
+Queue → .push()
+Set   → .add()
+Map   → .set()
+```
+
+That's exactly why you got confused in Keys and Rooms.
+
+---
+
+# 1. Stack — DFS
+
+Think:
+
+> **LIFO — Last In, First Out**
+
+```js
+let stack = [];
+```
+
+### Push onto stack
+
+```js
+stack.push(5);
+```
+
+```text
+[5]
+```
+
+Then:
+
+```js
+stack.push(10);
+```
+
+```text
+[5, 10]
+```
+
+### Pop
+
+```js
+let x = stack.pop();
+```
+
+`x` becomes:
+
+```text
+10
+```
+
+Stack becomes:
+
+```text
+[5]
+```
+
+### Peek
+
+Don't remove it:
+
+```js
+stack[stack.length - 1]
+```
+
+### Typical DFS
+
+```js
+let stack = [0];
+
+while (stack.length > 0) {
+
+    let node = stack.pop();
+
+    // ...
+
+    stack.push(neighbor);
+}
+```
+
+So when you see:
+
+> **DFS iterative**
+
+immediately think:
+
+```text
+stack
+push
+pop
+```
+
+---
+
+# 2. Queue — BFS
+
+Think:
+
+> **FIFO — First In, First Out**
+
+```js
+let queue = [];
+```
+
+Add:
+
+```js
+queue.push(5);
+queue.push(10);
+```
+
+```text
+[5, 10]
+ ↑
+ front
+```
+
+Remove front:
+
+```js
+let x = queue.shift();
+```
+
+`x`:
+
+```text
+5
+```
+
+queue:
+
+```text
+[10]
+```
+
+Peek:
+
+```js
+queue[0]
+```
+
+### Typical BFS
+
+```js
+let queue = [root];
+
+while (queue.length > 0) {
+
+    let node = queue.shift();
+
+    // ...
+
+    queue.push(node.left);
+    queue.push(node.right);
+}
+```
+
+So:
+
+> **BFS**
+
+think:
+
+```text
+queue
+push
+shift
+```
+
+### Stack vs Queue
+
+This is extremely important:
+
+```text
+STACK
+add     → push()
+remove  → pop()
+
+QUEUE
+add     → push()
+remove  → shift()
+```
+
+Both use `push()` to add.
+
+The difference is **where you remove from**.
+
+---
+
+# 3. Set — visited / unique values
+
+This is what you'll use constantly in graphs.
+
+```js
+let visited = new Set();
+```
+
+### Add
+
+```js
+visited.add(5);
+```
+
+NOT:
+
+```js
+visited.push(5); ❌
+```
+
+### Check
+
+```js
+visited.has(5)
+```
+
+### Check NOT present
+
+```js
+!visited.has(5)
+```
+
+### Remove
+
+```js
+visited.delete(5);
+```
+
+### Size
+
+```js
+visited.size
+```
+
+NOT:
+
+```js
+visited.length ❌
+```
+
+### Common graph pattern
+
+```js
+if (!visited.has(neighbor)) {
+    visited.add(neighbor);
+    stack.push(neighbor);
+}
+```
+
+Notice there are **two different data structures here**:
+
+```js
+visited.add(neighbor); // SET
+stack.push(neighbor);  // ARRAY acting as STACK
+```
+
+That's exactly the distinction that tripped you up.
+
+---
+
+# 4. Map — frequency / key-value relationships
+
+Create:
+
+```js
+let map = new Map();
+```
+
+Add:
+
+```js
+map.set("a", 5);
+```
+
+Get:
+
+```js
+map.get("a");
+```
+
+returns:
+
+```text
+5
+```
+
+Check:
+
+```js
+map.has("a");
+```
+
+Delete:
+
+```js
+map.delete("a");
+```
+
+Size:
+
+```js
+map.size;
+```
+
+### Frequency counting
+
+You'll use this constantly:
+
+```js
+map.set(x, (map.get(x) || 0) + 1);
+```
+
+If `x` doesn't exist:
+
+```text
+map.get(x)
+↓
+undefined
+↓
+undefined || 0
+↓
+0
+↓
+0 + 1
+↓
+1
+```
+
+---
+
+# 5. Iterating a Map
+
+Keys:
+
+```js
+for (let key of map.keys()) {
+    console.log(key);
+}
+```
+
+Values:
+
+```js
+for (let value of map.values()) {
+    console.log(value);
+}
+```
+
+Both:
+
+```js
+for (let [key, value] of map) {
+    console.log(key, value);
+}
+```
+
+---
+
+# 6. Arrays
+
+You'll obviously use these everywhere.
+
+```js
+let arr = [10, 20, 30];
+```
+
+Get element:
+
+```js
+arr[0]
+```
+
+→ `10`
+
+Last element:
+
+```js
+arr[arr.length - 1]
+```
+
+Add end:
+
+```js
+arr.push(40);
+```
+
+Remove end:
+
+```js
+arr.pop();
+```
+
+Remove beginning:
+
+```js
+arr.shift();
+```
+
+Add beginning:
+
+```js
+arr.unshift(5);
+```
+
+Check if exists:
+
+```js
+arr.includes(20);
+```
+
+Find index:
+
+```js
+arr.indexOf(20);
+```
+
+If not found:
+
+```js
+arr.indexOf(100);
+```
+
+→ `-1`
+
+---
+
+# 7. `slice()` vs `splice()`
+
+These get confused constantly.
+
+### `slice()`
+
+Does **not** modify original:
+
+```js
+let arr = [1,2,3,4,5];
+
+let x = arr.slice(1,4);
+```
+
+gives:
+
+```text
+[2,3,4]
+```
+
+Original remains:
+
+```text
+[1,2,3,4,5]
+```
+
+### `splice()`
+
+**Modifies** original.
+
+```js
+arr.splice(1, 2);
+```
+
+means:
+
+> Starting index 1, remove 2 elements.
+
+```text
+[1,2,3,4,5]
+   ↑ ↑
+
+remove 2,3
+```
+
+becomes:
+
+```text
+[1,4,5]
+```
+
+---
+
+# 8. Array → Set
+
+Useful for removing duplicates:
+
+```js
+let arr = [1,1,2,2,3];
+
+let set = new Set(arr);
+```
+
+Now:
+
+```text
+{1,2,3}
+```
+
+---
+
+# 9. Set → Array
+
+Spread operator:
+
+```js
+let arr = [...set];
+```
+
+Also remember spread:
+
+```js
+const nums = [1,2,3];
+
+console.log(...nums);
+```
+
+acts roughly like:
+
+```js
+console.log(1,2,3);
+```
+
+That's why:
+
+```js
+Math.max(...nums);
+```
+
+works.
+
+---
+
+# 10. Strings
+
+You'll need these frequently too.
+
+```js
+let s = "hello";
+```
+
+Length:
+
+```js
+s.length
+```
+
+Character:
+
+```js
+s[0]
+```
+
+Contains:
+
+```js
+s.includes("ell")
+```
+
+Convert to array:
+
+```js
+s.split("");
+```
+
+```text
+["h","e","l","l","o"]
+```
+
+Array back to string:
+
+```js
+arr.join("");
+```
+
+Lowercase:
+
+```js
+s.toLowerCase();
+```
+
+Uppercase:
+
+```js
+s.toUpperCase();
+```
+
+Substring:
+
+```js
+s.slice(1,4);
+```
+
+---
+
+# 11. `for...of` vs `for...in`
+
+This one just hit you in Keys and Rooms, so memorize it.
+
+Given:
+
+```js
+let arr = [10,20,30];
+```
+
+### `for...of` → VALUES
+
+```js
+for (let x of arr) {
+    console.log(x);
+}
+```
+
+outputs:
+
+```text
+10
+20
+30
+```
+
+### `for...in` → INDEXES/KEYS
+
+```js
+for (let x in arr) {
+    console.log(x);
+}
+```
+
+outputs:
+
+```text
+0
+1
+2
+```
+
+For LeetCode arrays, **you'll usually want `for...of`** when you don't need the index.
+
+---
+
+# 12. Object
+
+Sometimes graphs/maps are represented using normal JS objects:
+
+```js
+const graph = {
+    0: [1,2],
+    1: [0,3],
+    2: [0]
+};
+```
+
+Access:
+
+```js
+graph[0]
+```
+
+→
+
+```text
+[1,2]
+```
+
+Check property:
+
+```js
+key in graph
+```
+
+Get keys:
+
+```js
+Object.keys(graph);
+```
+
+Get values:
+
+```js
+Object.values(graph);
+```
+
+Get both:
+
+```js
+Object.entries(graph);
+```
+
+---
+
+# 13. Sorting — important JS gotcha
+
+Never assume:
+
+```js
+nums.sort();
+```
+
+does numeric sorting correctly.
+
+JavaScript defaults to string-like sorting.
+
+Use:
+
+### Ascending
+
+```js
+nums.sort((a,b) => a-b);
+```
+
+### Descending
+
+```js
+nums.sort((a,b) => b-a);
+```
+
+---
+
+# 14. Math operations you'll use
+
+Maximum:
+
+```js
+Math.max(a,b);
+```
+
+Array maximum:
+
+```js
+Math.max(...nums);
+```
+
+Minimum:
+
+```js
+Math.min(a,b);
+```
+
+Array minimum:
+
+```js
+Math.min(...nums);
+```
+
+Absolute:
+
+```js
+Math.abs(x);
+```
+
+Floor:
+
+```js
+Math.floor(x);
+```
+
+Ceiling:
+
+```js
+Math.ceil(x);
+```
+
+---
+
+# 15. The mini cheat sheet I'd memorize
+
+Don't try memorizing every method above. For DSA right now, get these automatic:
+
+```text
+ARRAY
+-------------------------
+add end       push()
+remove end    pop()
+remove front  shift()
+add front     unshift()
+contains      includes()
+size          length
+
+
+STACK (Array)
+-------------------------
+add            push()
+remove         pop()
+peek           stack[stack.length - 1]
+empty          stack.length === 0
+
+
+QUEUE (Array)
+-------------------------
+add            push()
+remove         shift()
+peek           queue[0]
+empty          queue.length === 0
+
+
+SET
+-------------------------
+add            add()
+contains       has()
+not contains   !has()
+remove         delete()
+size           size
+
+
+MAP
+-------------------------
+add/update     set(key,value)
+get            get(key)
+contains key   has(key)
+remove         delete(key)
+size           size
+```
+
+And specifically for the graph problems you're starting now:
+
+```text
+DFS iterative
+    Stack → push / pop
+    Set   → add / has
+
+BFS
+    Queue → push / shift
+    Set   → add / has
+
+DFS recursive
+    Recursion
+    Set   → add / has
+```
+
+So for **841 Keys and Rooms**, when you see:
+
+```js
+let visited = new Set();
+let stack = [0];
+```
+
+mentally label them:
+
+```js
+visited.add(room);     // SET → add
+visited.has(room);     // SET → has
+
+stack.push(room);      // STACK → push
+stack.pop();           // STACK → pop
+
+visited.size;          // SET → size
+stack.length;          // ARRAY → length
+```
+
+That distinction alone will prevent a bunch of the syntax mistakes you've been running into.

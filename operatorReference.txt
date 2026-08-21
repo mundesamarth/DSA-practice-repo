@@ -1,0 +1,73 @@
+| Data structure | Add                     | Remove                         | Check/Find                  | Size      | Peek/Access             |
+| -------------- | ----------------------- | ------------------------------ | --------------------------- | --------- | ----------------------- |
+| **Stack**      | `push(x)`               | `pop()`                        | `includes(x)`               | `.length` | `stack[stack.length-1]` |
+| **Queue**      | `push(x)`               | `shift()`                      | `includes(x)`               | `.length` | `queue[0]`              |
+| **Set**        | `add(x)`                | `delete(x)`                    | `has(x)`                    | `.size`   | —                       |
+| **Map**        | `set(k,v)`              | `delete(k)`                    | `has(k)`                    | `.size`   | `get(k)`                |
+| **Array**      | `push(x)`, `unshift(x)` | `pop()`, `shift()`, `splice()` | `includes(x)`, `indexOf(x)` | `.length` | `arr[i]`                |
+| **String**     | —                       | —                              | `includes(x)`, `indexOf(x)` | `.length` | `str[i]`                |
+
+// Array
+arr.slice(start, end)
+arr.join("")
+arr.reverse()
+arr.sort((a,b) => a-b)
+arr.map(...)
+arr.filter(...)
+arr.find(...)
+arr.findIndex(...)
+
+// Set
+set.has(x)
+!set.has(x)
+set.clear()
+
+// Map
+map.get(key)
+map.set(key, value)
+map.has(key)
+map.keys()
+map.values()
+map.entries()
+
+// Conversion
+[...set]             // Set → Array
+new Set(arr)         // Array → Set
+str.split("")        // String → Array
+arr.join("")         // Array → String
+
+// Iteration
+for (let value of arr)       // values
+for (let index in arr)       // indexes
+for (let [k,v] of map)       // Map entries
+
+// Math
+Math.max(a,b)
+Math.max(...arr)
+Math.min(a,b)
+Math.min(...arr)
+Math.abs(x)
+Math.floor(x)
+Math.ceil(x)
+
+
+Stack → push / pop / length
+Queue → push / shift / length
+Set   → add / has / delete / size
+Map   → set / get / has / delete / size
+Array → push / pop / shift / unshift / length
+
+DFS iterative
+    Stack → push / pop
+    Set   → add / has
+
+BFS
+    Queue → push / shift
+    Set   → add / has
+
+DFS recursive
+    Recursion
+    Set   → add / has
+
+for (let x in array)  // indexes
+for (let x of array)  // values

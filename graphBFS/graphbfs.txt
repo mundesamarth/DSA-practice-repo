@@ -1,0 +1,16 @@
+- Graph BFS is very similar to the tree BFS , but graphs can have cycles, so we need VISITED.
+
+- BFS is level by level.
+
+For graph BFS we need:
+    Queue   → nodes waiting to be explored
+    Visited → nodes we've already discovered
+
+QUEUE
+add     → push()
+remove  → shift()
+
+SET
+add     → add()
+check   → has()
+get key - > get()

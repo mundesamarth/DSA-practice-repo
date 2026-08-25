@@ -1,0 +1,66 @@
+Try a choice → explore what happens → come back → try the next choice.
+
+
+1. BASE CASE
+   When have I completed an answer?
+
+2. CHOICES
+   What can I choose right now?
+
+3. CHOOSE + EXPLORE
+   Make a choice and recurse.
+
+4. BACKTRACK
+   Undo the choice so I can try another.
+
+
+Basic Syntax
+
+const backtrack = (...) => {
+
+    if (/* finished */) {
+        result.push(/* answer */);
+        return;
+    }
+
+    for (let choice of choices) {
+
+        // choose
+        current.push(choice);
+
+        // explore
+        backtrack(...);
+
+        // undo
+        current.pop();
+    }
+};
+
+current.push(choice); // choose
+
+backtrack(...);       // explore
+
+current.pop();        // undo
+
+
+OPERATORS:
+// Add choice
+current.push(value);
+
+// Undo choice
+current.pop();
+
+// Copy current answer
+[...current]
+
+// Add completed answer
+result.push([...current]);
+
+// Check something
+set.has(value);
+
+// Mark something used
+set.add(value);
+
+// Undo used
+set.delete(value);

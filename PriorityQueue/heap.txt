@@ -1,0 +1,18 @@
+// Create
+const minHeap = new MinPriorityQueue();
+const maxHeap = new MaxPriorityQueue();
+
+// Add
+heap.enqueue(value);
+
+// Remove highest-priority item
+heap.dequeue();
+
+// Look at highest-priority item
+heap.front();
+
+// Number of elements
+heap.size();
+
+// Empty?
+heap.isEmpty();

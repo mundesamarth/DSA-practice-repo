@@ -1,0 +1,66 @@
+AND
+1 & 1 = 1
+everything else = 0
+
+OR
+0 | 0 = 0
+everything else = 1
+
+XOR
+same      → 0
+different → 1
+
+| Operation | JS | Example | Result |
+|---|---|---|---|
+| AND | `&` | `5 & 3` | `1` |
+| OR | `\|` | `5 \| 3` | `7` |
+| XOR | `^` | `5 ^ 3` | `6` |
+| NOT | `~` | `~5` | `-6` |
+| Left shift | `<<` | `5 << 1` | `10` |
+| Signed right shift | `>>` | `5 >> 1` | `2` |
+| Unsigned right shift | `>>>` | `5 >>> 1` | `2` |
+| Decimal → binary string | `.toString(2)` | `(5).toString(2)` | `"101"` |
+| Binary string → number | `parseInt(str, 2)` | `parseInt("101", 2)` | `5` |
+| Add leading zeros | `.padStart()` | `"101".padStart(8,"0")` | `"00000101"` |
+
+
+
+AND BITWISE
+operation           Result
+0 & 0                  0
+1 & 0                  0
+0 & 1                  0
+1 & 1                  1
+
+
+OR BITWISE
+operation           Result
+0 | 0                  0
+1 | 0                  1
+0 | 1                  1
+1 | 1                  1
+
+XOR BITWISE
+operation           Result
+0 ^ 0                  0
+1 ^ 0                  1
+0 ^ 1                  1
+1 ^ 1                  0
+
+
+<< - Zero fill left shift - Shifts left by pushing zeros in from the right and let the leftmost bits fall off
+>> - Signed right  shift - Shifts right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off
+>>> - Zero fill right shift - Shifts right by pushing zeros in from the left, and let the rightmost bits fall off
+
+
+CONVERTING DECIMAL TO BINARY
+
+function dec2bin(dec){
+  return (dec >>> 0).toString(2);
+}
+
+CONVERTING BINARY TO DECIMAL
+
+function bin2dec(bin){
+  return parseInt(bin, 2).toString(10);
+}

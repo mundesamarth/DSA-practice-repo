@@ -86,30 +86,7 @@ let points = [
 ];
 let k = 2;
 const kClostest = (points, k) => {
-    const maxHeap = new MaxHeap({
-        priority: (item) => item.distance
-    })
-
-    for(let [x,y] of points){
-        let distance = x*x + y*y;
-
-        maxHeap.push({
-            point:[x,y],
-            distance: distance
-        });
-
-        if(maxHeap.size() > k){
-            maxHeap.pop();
-        }
-    }
-
-    let result = [];
-    console.log(maxHeap)
-    // while(!maxHeap !== 0){
-    //     result.push(maxHeap.pop())
-    // }
-
-    // return result
+    
 };
 
 

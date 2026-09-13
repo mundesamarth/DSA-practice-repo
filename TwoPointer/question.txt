@@ -1,0 +1,43 @@
+Two Pointers
+Easy — solve all 9
+- #125 Valid Palindrome ✅
+- #283 Move Zeroes ✅
+- #344 Reverse String✅
+- #345 Reverse Vowels of a String✅
+- #392 Is Subsequence✅
+- #680 Valid Palindrome II. - solve again later
+- #26 Remove Duplicates from Sorted Array ✅
+- #27 Remove Element ✅
+- #977 Squares of a Sorted Array
+Medium — solve these 9
+- #167 Two Sum II
+- #11 Container With Most Water
+- #15 3Sum
+- #16 3Sum Closest
+- #18 4Sum
+- #75 Sort Colors
+- #443 String Compression
+- #611 Valid Triangle Number
+- #881 Boats to Save People
+Hard
+- #42 Trapping Rain Water
+You are already on #16, so continue from there.
+Sliding Window
+Easy
+- #643 Maximum Average Subarray I
+- #219 Contains Duplicate II
+- #1876 Substrings of Size Three with Distinct Characters
+Medium
+- #1456 Maximum Number of Vowels
+- #3 Longest Substring Without Repeating Characters
+- #209 Minimum Size Subarray Sum
+- #424 Longest Repeating Character Replacement
+- #567 Permutation in String
+- #438 Find All Anagrams in a String
+- #1004 Max Consecutive Ones III
+- #904 Fruit Into Baskets
+- #1343 Number of Sub-arrays of Size K...
+- #1208 Get Equal Substrings Within Budget
+Hard
+- #76 Minimum Window Substring
+- #239 Sliding Window Maximum
